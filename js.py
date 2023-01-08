@@ -36,4 +36,5 @@ with open("js.txt", "w") as f:
         f.write(url + "\n")
 
 # Do nuclei template scan
-!nuclei -t templates/api-keys.yaml -l js.txt
+!nuclei -t /root/nuclei-templates/exposures/ -l js.txt
+
