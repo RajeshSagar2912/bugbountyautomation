@@ -1,4 +1,4 @@
-# bugbountyautomation(backup)
+# bugbountyautomation (backup)
 
 >>This repo contains various python automation scripts useful for bugbounty hunting.
 >>
