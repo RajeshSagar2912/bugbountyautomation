@@ -1,4 +1,5 @@
-# bugbountyautomation
+# bugbountyautomation(backup)
+
 >>This repo contains various python automation scripts useful for bugbounty hunting.
 >>
 >>For jsinfo script
