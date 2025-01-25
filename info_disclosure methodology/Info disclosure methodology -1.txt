@@ -16,6 +16,8 @@ https://freelancermijan.github.io/reconengine/ - via this you can get those serv
 
 2)for alien-vault, we need to use hostname for specific subdomain, and domain for getting urls including all the subdomains
 
+Use this tool: https://github.com/Suryesh/OTX_AlienVault_URL
+
 3)for virus-total we need to search for every subdomain individually (you will get good results)
 
 4)visit the virus-total api endpoint and take a subdomain, and use it for orwa.sh
