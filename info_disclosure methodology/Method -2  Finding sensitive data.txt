@@ -1,0 +1,21 @@
+Method -2 : Finding sensitive data in pdf files and advanced usage of wayback machine - coffinxp
+
+
+1) filter those sensitive file extensions - then analyse them. Here you go 
+
+https://web.archive.org/cdx/search/cdx?url=*.target.com/*&collapse=urlkey&output=text&fl=original&filter=original:.*\.(xls|xml|xlsx|json|pdf|sql|doc|docx|pptx|txt|git|zip|tar\.gz|tgz|bak|7z|rar|log|cache|secret|db|backup|yml|gz|config|csv|yaml|md|md5|exe|dll|bin|ini|bat|sh|tar|deb|rpm|iso|img|env|apk|msi|dmg|tmp|crt|pem|key|pub|asc)$
+
+Check for interesting endpoints. If they are 404 not found, then visit the web archive website and check for the snapshots.
+
+2) Exclusive method for finding sensitive information in pdf files , the curl commands are
+
+-->curl "https://web.archive.org/cdx/search/cdx?url=*.target.com/*&collapse=urlkey&output=text&fl=original&filter=original:.*\.(pdf)$" | tee output.txt
+
+-->cat output.txt | grep -Ea '\.pdf' | while read -r url; do curl -s "$url" | pdftotext - - | grep -Eaiq '(internal use only|confidential|strictly private|personal & confidential|private|restricted|internal|not for distribution do not share|proprietary trade secret|classified|sensitive|bank statement|invoice|salary|contract|agreement|non disclosure|passport|social security|ssn|date of birth|credit card|identity|id number|company confidential|staff only|management only internal only)' && echo "$url";done > sensitive_pdfs.txt
+
+Same here also, in output.txt file we could find some pdfs which are not accessible now, but we can find them using web archive website, going to past snapshots.
+
+3) checking robots.txt file for sensitive endpoints, and also checking the previous snapshots for finding more endpoints. Use can use tools like waybackrobots for this.
+
+You can automate these steps very easily using a simple bash script. 
+
