@@ -19,3 +19,4 @@ Same here also, in output.txt file we could find some pdfs which are not accessi
 
 You can automate these steps very easily using a simple bash script. 
 
+Another tool: https://github.com/anmolksachan/WayBackupFinder
