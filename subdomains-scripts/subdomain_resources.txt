@@ -5,17 +5,17 @@ First of all for subdomain enumeration I use this tool called sudomy https://git
 
 https://github.com/gwen001/github-subdomains
 
-github-subdomains -d target.com -t your_github_token 
+--> github-subdomains -d target.com -t your_github_token 
 
 2) Collecting subdomains from Cloud
 
 https://github.com/Spix0r/cloudrecon
 
-./main.sh -u -s target.com
+--> ./main.sh -u -s target.com
 
 3) collecting subdomains from leakix 
 
-curl -H 'accept: application/json' "https://leakix.net/api/subdomains/$target" | jq -r '.[].subdomain' 
+--> curl -H 'accept: application/json' "https://leakix.net/api/subdomains/$target" | jq -r '.[].subdomain' 
 
 Here is the bash script to automate these three:
 
