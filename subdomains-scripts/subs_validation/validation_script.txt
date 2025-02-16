@@ -1,5 +1,6 @@
 Download the validation.py file from here: https://recon-royale.com/validation.html
 
+```
 #!/bin/bash
 
 # Step 1: Filter out lines containing uppercase letters
@@ -21,3 +22,5 @@ python3 code.py
 echo "Script execution completed!"
 
 rm shit.txt waste_subs.txt filtered_subdomains.txt 
+
+```
