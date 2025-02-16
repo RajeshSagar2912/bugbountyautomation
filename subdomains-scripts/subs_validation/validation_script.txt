@@ -1,0 +1,23 @@
+Download the validation.py file from here: https://recon-royale.com/validation.html
+
+#!/bin/bash
+
+# Step 1: Filter out lines containing uppercase letters
+grep -v '[A-Z]' subdomains.txt > filtered_subdomains.txt
+
+# Step 2: Prompt user for target domain name
+echo -n "Enter the target domain (e.g., target.com): "
+read target
+
+# Step 3: Run validation.py script and filter output for DNS
+python3 validation.py -l filtered_subdomains.txt -t "$target" -v | grep DNS > shit.txt
+
+# Step 4: Extract the desired part from the output and save to waste_subs.txt
+grep -oP '(?<=- )[^ ]+' shit.txt > waste_subs.txt
+
+# Step 5: Run the code.py script
+python3 code.py
+
+echo "Script execution completed!"
+
+rm shit.txt waste_subs.txt filtered_subdomains.txt 
