@@ -1,4 +1,4 @@
-First of all for subdomain enumeration I use this tool called sudomy https://github.com/screetsec/Sudomy, with most of the api keys configured. So below are some more resources. To be ahead in the game.
+First of all for subdomain enumeration I use this tool called sudomy https://github.com/screetsec/Sudomy, with most of the api keys configured. Apart from this I use multiple passive subdomains resources, ofcourse I can't dislcose all of them here. So below are some more resources. To be ahead in the game.
 
 
 1) Collecting subdomains from GitHub
