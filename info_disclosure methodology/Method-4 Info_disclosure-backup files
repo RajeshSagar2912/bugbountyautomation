@@ -1,0 +1,67 @@
+This is a small python script that will create the target specific backup wordlist file and fuzz it with ffuf. So ffuf should be preinstalled.
+
+The command: python3 backup.py https://www.target.com
+
+```
+
+import argparse
+import os
+import subprocess
+from urllib.parse import urlparse
+
+def generate_wordlist(domain):
+    base = domain.split('.')[0]  # Extracts 'example' from example.com
+    extensions = ["7z", "bz2", "gz", "lz", "rar", "tar.gz", "tar.bz2", "xz", "zip", "z", "tar.z",
+                  "db", "sqlite", "sqlitedb", "sql.7z", "sql.bz2", "sql.gz", "sql.lz", "sql.rar",
+                  "sql.tar.gz", "sql.xz", "sql.zip", "sql.z", "sql.tar.z",
+                  "bak", "tmp", "bkf", "bkp", "arc", "dar", "gho", "vhd", "vmdk", "asd", "bak2"]
+    
+    variations = [
+        f"{domain}",
+        f"{base}",
+        f"backup_{base}",
+        f"{base}_backup",
+	f"{base}-backup",
+	f"{base}~backup",
+	f"{base}-db",
+	f"{base}~db",
+        f"{base}_db",
+        f"{base}_sql"
+
+    ]
+    
+    wordlist = [f"{v}.{ext}" for v in variations for ext in extensions]
+    return wordlist
+
+def save_wordlist(wordlist, filename="backup_wordlist.txt"):
+    with open(filename, "w") as f:
+        f.write("\n".join(wordlist))
+    return filename
+
+def run_ffuf(target, wordlist_file):
+    ffuf_cmd = [
+        "ffuf", "-u", f"{target}/FUZZ", "-w", wordlist_file,
+        "-mc", "200", "-fs", "0"
+    ]
+    subprocess.run(ffuf_cmd)
+
+def main():
+    parser = argparse.ArgumentParser(description="Backup File Finder using FFUF")
+    parser.add_argument("target", help="Target URL (e.g., https://example.com)")
+    args = parser.parse_args()
+    
+    parsed_url = urlparse(args.target)
+    domain = parsed_url.netloc.lstrip("www.")  # Remove 'www.' if it exists
+    
+    print("[+] Generating target-specific wordlist...")
+    wordlist = generate_wordlist(domain)
+    wordlist_file = save_wordlist(wordlist)
+    print(f"[+] Wordlist saved: {wordlist_file}")
+    
+    print("[+] Running FFUF...")
+    run_ffuf(args.target, wordlist_file)
+
+if __name__ == "__main__":
+    main()
+
+```
