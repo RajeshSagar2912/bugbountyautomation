@@ -1,0 +1,8 @@
+I just got this idea and implemented, this given me good results
+
+In burp, go to target --> engagements tool --> Find comments --> save them to a file.
+
+Now use gpt or ai, and give this prompt
+
+"you are a professional bughunter, Please analyze the following comments that I've collected using BurpSuite's engagement tools. 
+Identify and highlight any sensitive information that might be present in the uploaded comments file"
