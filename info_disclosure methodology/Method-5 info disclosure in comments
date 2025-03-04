@@ -6,3 +6,7 @@ Now use gpt or ai, and give this prompt
 
 "you are a professional bughunter, Please analyze the following comments that I've collected using BurpSuite's engagement tools. 
 Identify and highlight any sensitive information that might be present in the uploaded comments file"
+
+--> In the similar way, you can also do by collecting scripts
+And write a prompt such that it will identify the logic of the js, reconstruct the urls from the paths etc, good prompt writing entirely depends on your creativity.
+
