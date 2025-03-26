@@ -1,3 +1,7 @@
-Docker hub recon.
+1)Docker hub recon.
 
 https://github.com/UndeadSec/DockerSpy
+
+2)Swagger recon: 
+
+Check if there are any API secrets left in Swagger : https://app.swaggerhub.com/search
