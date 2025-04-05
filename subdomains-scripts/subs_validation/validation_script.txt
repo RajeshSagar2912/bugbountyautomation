@@ -16,7 +16,7 @@ python3 validation.py -l filtered_subdomains.txt -t "$target" -v | grep DNS > sh
 # Step 4: Extract the desired part from the output and save to waste_subs.txt
 grep -oP '(?<=- )[^ ]+' shit.txt > waste_subs.txt
 
-# Step 5: Run the code.py script
+# Step 5: Run the filter.py script
 python3 filtering.py
 
 echo "Script execution completed!"
